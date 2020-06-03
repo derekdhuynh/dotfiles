@@ -1,6 +1,14 @@
 # Enable colors and change prompt:
 autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[green]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+
+# Command history
+export HISTFILE=~/.zsh_history
+HISTFILESIZE=100000
+HISTSIZE=100000
+setopt INC_APPEND_HISTORY # Immediate append
+export HISTTIMEFORMAT="[%F %T] "
+setopt EXTENDED_HISTORY # History file stamp
 
 # Enable vim keybindings
 bindkey -v
@@ -10,6 +18,7 @@ export KEYTIMEOUT=1
 autoload -U compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
+compinit -u
 _comp_options+=(globdots)		# Include hidden files.
 
 # Use vim keys in tab complete menu:
@@ -19,19 +28,15 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
+# v in command mode will allow editing current command in vim
+export VISUAL=vim
+autoload edit-command-line; zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
 # Shortened commands
 alias l='ls'
 alias c='clear'
 alias p3='python3'
 
-# Aliases for moving to common directories
-alias comp='cd ~/Documents/coding-comp'
-alias datascience='cd ~/Documents/datascience'
-alias webdev='cd ~/Documents/webdev'
 
-# Python virtual environments
-alias flask-env='source ~/Documents/webdev/flask_env/bin/activate'
-alias ds-env='source ~/Documents/datascience/ds-venv/bin/activate'
 
-# Vim alias for mvim -v
-alias vim='mvim -v'
