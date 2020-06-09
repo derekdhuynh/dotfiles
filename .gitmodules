@@ -1,0 +1,12 @@
+[submodule "vim/bundle/onehalf"]
+	path = vim/bundle/onehalf
+	url = https://github.com/sonph/onehalf
+[submodule "vim/bundle/python-syntax"]
+	path = vim/bundle/python-syntax
+	url = https://github.com/vim-python/python-syntax
+[submodule "vim/bundle/vim-airline"]
+	path = vim/bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline
+[submodule "vim/bundle/vim-monokai"]
+	path = vim/bundle/vim-monokai
+	url = https://github.com/sickill/vim-monokai
