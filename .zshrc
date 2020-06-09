@@ -1,9 +1,10 @@
 # Enable colors and change prompt:
 autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[green]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+PS1="%B%{$fg[blue]%}[%{$fg[yellow]%}%n%{$fg[cyan]%}@%{$fg[red]%}%M %{$fg[green]%}%~%{$fg[blue]%}]%{$reset_color%}$%b "
 
 # Command history
 export HISTFILE=~/.zsh_history
+SAVEHIST=100000
 HISTFILESIZE=100000
 HISTSIZE=100000
 setopt INC_APPEND_HISTORY # Immediate append
@@ -13,6 +14,9 @@ setopt EXTENDED_HISTORY # History file stamp
 # Enable vim keybindings
 bindkey -v
 export KEYTIMEOUT=1
+
+# History search bindings
+bindkey '^A' history-incremental-search-backward
 
 # Basic auto/tab complete:
 autoload -U compinit
@@ -34,9 +38,7 @@ autoload edit-command-line; zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 
 # Shortened commands
-alias l='ls'
+alias l='ls -a'
+alias ls='ls -a'
 alias c='clear'
 alias p3='python3'
-
-
-

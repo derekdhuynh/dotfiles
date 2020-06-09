@@ -1,0 +1,14 @@
+2020/06/07-08:01:53.992 40f Reusing MANIFEST /home/derek/.config/chromium/Default/Local Storage/leveldb/MANIFEST-000001
+2020/06/07-08:01:54.000 40f Recovering log #36
+2020/06/07-08:01:54.010 40f Level-0 table #39: started
+2020/06/07-08:01:54.025 40f Level-0 table #39: 83202 bytes OK
+2020/06/07-08:01:54.039 40f Delete type=0 #36
+2020/06/07-08:01:54.042 423 Compacting 4@0 + 1@1 files
+2020/06/07-08:01:54.091 423 Generated table #41@0: 176 keys, 93548 bytes
+2020/06/07-08:01:54.091 423 Compacted 4@0 + 1@1 files => 93548 bytes
+2020/06/07-08:01:54.101 423 compacted to: files[ 0 1 1 0 0 0 0 ]
+2020/06/07-08:01:54.102 423 Delete type=2 #37
+2020/06/07-08:01:54.102 423 Delete type=2 #32
+2020/06/07-08:01:54.102 423 Delete type=2 #39
+2020/06/07-08:01:54.102 423 Delete type=2 #30
+2020/06/07-08:01:54.102 423 Delete type=2 #34
