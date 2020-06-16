@@ -1,13 +1,22 @@
 # Enable colors and change prompt:
 autoload -U colors && colors
-PS1="%B%{$fg[blue]%}[%{$fg[yellow]%}%n%{$fg[cyan]%}@%{$fg[red]%}%M %{$fg[green]%}%~%{$fg[blue]%}]%{$reset_color%}$%b "
+PS1="%B%{$fg[yellow]%}%n%{$fg[green]%}%~ %{$reset_color%}$%b "
+
+# %{$fg[red]%}%M    # Hostname
+# %{$fg[cyan]%}@    # @ symbol
+# %{$fg[blue]%}]    # Inner bracket
+# %{$fg[blue]%}[    # Outer bracket
+
+# grep highlight matches
+export GREP_OPTIONS='--color=always'
+#export GREP_COLOR='1;35;40'
 
 # Command history
 export HISTFILE=~/.zsh_history
 SAVEHIST=100000
 HISTFILESIZE=100000
 HISTSIZE=100000
-setopt INC_APPEND_HISTORY # Immediate append
+setopt INC_APPEND_HISTORY_TIME # Immediate append
 export HISTTIMEFORMAT="[%F %T] "
 setopt EXTENDED_HISTORY # History file stamp
 
@@ -15,8 +24,9 @@ setopt EXTENDED_HISTORY # History file stamp
 bindkey -v
 export KEYTIMEOUT=1
 
-# History search bindings
+# History search keybinds
 bindkey '^A' history-incremental-search-backward
+# bindkey -M isearch '^R' history-incremental-search-forward
 
 # Basic auto/tab complete:
 autoload -U compinit
@@ -42,3 +52,11 @@ alias l='ls -a'
 alias ls='ls -a'
 alias c='clear'
 alias p3='python3'
+
+# Vim alias for mvim -v and neovim
+# Mvim and Gvim paths
+# export PATH="$PATH:/Applications/MacVim.app/Contents/bin"
+# alias vim='mvim -v'
+# alias vim='vim'
+# alias vim='nvim'
+
