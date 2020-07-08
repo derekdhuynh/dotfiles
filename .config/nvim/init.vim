@@ -16,6 +16,7 @@ set expandtab     "tabs are spaces, competes with softtabstop
 set mouse=a       "allows mouse scroll
 set clipboard=unnamedplus
 
+
 "For Pathogen Package Manager
 execute pathogen#infect()
 
@@ -30,6 +31,8 @@ let g:monokai_termcolors=256
 "Search configs
 set incsearch     " search as characters are entered
 set hlsearch      "searches are highlighted
+set ignorecase    "Ignore case when searching
+set smartcase     "When searching try to be smart about cases
 
 " Remembers last cursor position
 autocmd BufReadPost *
