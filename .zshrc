@@ -8,7 +8,7 @@ PS1="%B%{$fg[yellow]%}%n%{$fg[green]%}%~ %{$reset_color%}$%b "
 # %{$fg[blue]%}[    # Outer bracket
 
 # grep highlight matches
-export GREP_OPTIONS='--color=always'
+#export GREP_OPTIONS='--color=always'
 #export GREP_COLOR='1;35;40'
 
 # Command history
@@ -53,10 +53,4 @@ alias ls='ls -a'
 alias c='clear'
 alias p3='python3'
 
-# Vim alias for mvim -v and neovim
-# Mvim and Gvim paths
-# export PATH="$PATH:/Applications/MacVim.app/Contents/bin"
-# alias vim='mvim -v'
-# alias vim='vim'
 # alias vim='nvim'
-
