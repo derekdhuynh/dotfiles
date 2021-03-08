@@ -4,19 +4,22 @@ set nocompatible  "not compatible with vim
 set relativenumber "shows relative order of lines
 syntax on         "enables syntax highlighting
 syntax enable     "syntax processing
-set tabstop=4 	  "makes tabs 4 spaces visually
-set softtabstop=4 "number of visual space for editing
 set cursorline    "shows which line cursor is on
 set showmatch     "highlights matching () and {}
 set ruler         "lets you see what line cursor is on plus column
-set shiftwidth=4  "when indenting with '>>', it is four spaces
 let g:python_highlight_all = 1
 filetype indent on " load filetype-specific indent files and detect different languages
 set expandtab     "tabs are spaces, competes with softtabstop
 set mouse=a       "allows mouse scroll
 set clipboard=unnamedplus
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
 
-"For Pathogen vim runtime manager
+"Changing indentation based on file type
+autocmd Filetype python setlocal tabstop=4 shiftwidth=4
+autocmd Filetype java setlocal tabstop=2 shiftwidth=2
+
+"For Pathogen Package Manager
 execute pathogen#infect()
 
 "Theme
@@ -25,6 +28,7 @@ set termguicolors   "for true color
 colorscheme monokai
 set background=dark
 let g:airline_theme='onehalfdark'
+set noshowmode
 let g:monokai_termcolors=256
 
 "Search configs
@@ -51,10 +55,6 @@ set switchbuf=usetab
 nnoremap <F8> :sbnext<CR>
 nnoremap <S-F8> :sbprevious<CR>
 
-" Vim-slime tmux setup
-let g:slime_target = "tmux"
-let g:slime_paste_file = "$HOME/.slime_paste"
-
 " Air line configs
 " old vim-powerline symbols
 let g:airline_powerline_fonts = 1
@@ -63,7 +63,7 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 
-" unicode symbols
+"" unicode symbols
 let g:airline_left_sep = '»'
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '«'
