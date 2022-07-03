@@ -47,6 +47,17 @@ export VISUAL=vim
 autoload edit-command-line; zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 
+# yank copies to system clipboard
+function vi-yank-pbcopy {
+    zle vi-yank
+   echo "$CUTBUFFER" | pbcopy
+}
+
+zle -N vi-yank-pbcopy
+zle -N vi-put-pbpaste
+bindkey -M vicmd v edit-command-line
+bindkey -M vicmd y vi-yank-pbcopy
+
 # Shortened commands
 alias l='ls -a'
 alias ls='ls -a'
