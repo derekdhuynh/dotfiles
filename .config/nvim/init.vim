@@ -1,8 +1,7 @@
 "General configs/ UI
-"set number       "shows number of lines
 set nocompatible  "not compatible with vim
 set relativenumber "shows relative order of lines
-syntax on         "enables syntax highlighting
+syntax on         "enables syntax highlighting, turn off if using treesitter
 syntax enable     "syntax processing
 set cursorline    "shows which line cursor is on
 set showmatch     "highlights matching () and {}
@@ -16,20 +15,64 @@ highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
 
 "Changing indentation based on file type
+autocmd Filetype python setlocal tabstop=4 shiftwidth=4 softtabstop=4
+autocmd Filetype java setlocal tabstop=2 shiftwidth=2 softtabstop=4
+autocmd Filetype c setlocal tabstop=2 shiftwidth=2 softtabstop=4
+autocmd Filetype html setlocal tabstop=2 shiftwidth=2 softtabstop=4
+autocmd Filetype css setlocal tabstop=2 shiftwidth=2 softtabstop=4
+
+"Changing indentation based on file type
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4
 autocmd Filetype java setlocal tabstop=2 shiftwidth=2
 
 "For Pathogen Package Manager
-execute pathogen#infect()
+"execute pathogen#infect()
+
+" If I wanted LSP
+"lua << EOF
+"require'lspconfig'.pyright.setup{}
+"EOF
+
+"Theme (LEGACY)
+"set termguicolors   "for true color
+"set t_Co=256       "for terms with only 256 colors
 
 "Theme
-set termguicolors   "for true color
-"set t_Co=256       "for terms with only 256 colors
-colorscheme monokai
-set background=dark
-let g:airline_theme='onehalfdark'
-set noshowmode
-let g:monokai_termcolors=256
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors "for true color
+  "set t_Co=256       "for terms with only 256 colors
+endif
+
+" All my homies hate monokai
+"let g:sonokai_enable_italic = 1
+"let g:sonokai_disable_italic_comment = 1
+"colorscheme sonokai 
+"set background=dark
+"let g:airline_theme='sonokai'
+"set noshowmode
+
+"tree-sitter syntax highlighting
+"lua <<EOF
+"require'nvim-treesitter.configs'.setup {
+"  --ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+"  --ignore_install = { "javascript" }, -- List of parsers to ignore installing
+"  highlight = {
+"    enable = true,              -- false will disable the whole extension
+"    --disable = { "c", "rust" },  -- list of language that will be disabled
+"  },
+"  incremental_selection = {
+"    enable = true,
+"    keymaps = {
+"      init_selection = "gnn",
+"      node_incremental = "grn",
+"      scope_incremental = "grc",
+"      node_decremental = "grm",
+"    },
+"  },
+"}
+"EOF
 
 "Search configs
 set incsearch     " search as characters are entered
